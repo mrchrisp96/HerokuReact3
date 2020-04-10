@@ -9,7 +9,10 @@ export default function Fetcher(props) {
       const  fetchData= async()=>{
         const res = await fetch(url);
         const json = await res.json();
-        setResponse(json);
+        setResponse(null)
+        setTimeout(function () {
+          setResponse(json);
+        }, 1000);
       }
       fetchData();
     }, [url, clicks]);
@@ -23,11 +26,15 @@ export default function Fetcher(props) {
             <p>Number of times data retrieved: {clicks}</p>
             <button onClick={doSomething} data-something="Default">
                 Retrieve User Data</button>
-            <p>{response? JSON.stringify(response) : 'waiting'}</p>
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
-            <Skeleton variant="rect" height={118} />
+            <p>{response? JSON.stringify(response) :
+              <p>
+                <Skeleton animation="wave" />
+                <Skeleton variant="text"/>
+                <Skeleton variant="text"/>
+                <Skeleton variant="circle" width={40} height={40}/>
+                <Skeleton variant="rect" width={210} height={118}/>
+              </p>
+            }</p>
         </React.Fragment>
-
     );
 }
