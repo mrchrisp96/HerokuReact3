@@ -20,13 +20,13 @@ export default function Fetcher(props) {
     }
     return (
         <React.Fragment>
-            <p>refresh user data count:{clicks}</p>
-            <Skeleton variant="text" />
-            <Skeleton variant="circle" width={40} height={40} />
-            <Skeleton variant="rect" width={210} height={118} />
+            <p>Number of times data retrieved: {clicks}</p>
             <button onClick={doSomething} data-something="Default">
-                Default</button>
+                Retrieve User Data</button>
             <p>{response? JSON.stringify(response) : 'waiting'}</p>
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+            <Skeleton variant="rect" height={118} />
         </React.Fragment>
 
     );
